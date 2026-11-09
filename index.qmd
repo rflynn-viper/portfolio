@@ -11,7 +11,7 @@ description: "Replace with a brief description for link previews."
 ::: {.callout-tip}
 This template suggests one way to tell the story. You may rename, combine, or reorder headings and add, remove, or move code chunks. Use plots, tables, selected model output, and prose in whatever combination best communicates your evidence. Keep every required part easy to find, use no more than four primary figures or tables, and delete this note and all bold prompts before submitting.
 :::
-
+This better work please
 ## The question
 
 **In one or two short paragraphs, introduce the setting, audience, focused research question, data source, observational unit, response, important predictors, and one important data limitation. Lead with what makes the question worth answering.**
