@@ -11,21 +11,21 @@
     "href": "ai-use.html#starting-point",
     "title": "AI Use and Verification",
     "section": "Starting point",
-    "text": "Starting point\nAI system and date: Replace.\nBefore using AI for the required extension, briefly state your question, course-based core model, baseline result, and the specific limitation or opportunity you wanted to address."
+    "text": "Starting point\nAI system and date: Claude Sonnet 5.5, Monday, November 9th.\nBefore using AI for the required extension, briefly state your question, course-based core model, baseline result, and the specific limitation or opportunity you wanted to address.\n\nCore model: ARR_DELAY_NEW ~ DAY_OF_WEEK (7 levels) + DISTANCE (miles) + TAXI_IN (minutes) + TAXI_OUT (minutes) + DEP_DELAY_NEW (minutes) + OP_UNIQUE_CARRIER (13 levels)\n\n\nQuestion: How do a variety of factors (like the ones above) impact the Arrival delays of flights?\n\n\nBaseline result: Our model had an R² of approximately 0.98, meaning it explained about 98% of the variation in arrival delays. Compared to Monday (our baseline day), only Saturday and Sunday did not have statistically significant effects. All other coefficients were statistically significant.\n\n\nWe still hope to work on coding up hubs into our data, as well as determining which predictors can help us actually make actual predictions, rather than just being able to fit the model (i.e. we don’t want to overfit)."
   },
   {
     "objectID": "ai-use.html#substantive-prompts",
     "href": "ai-use.html#substantive-prompts",
     "title": "AI Use and Verification",
     "section": "Substantive prompts",
-    "text": "Substantive prompts\nPaste the exact prompts that shaped the extension. Include the customized extension-selection prompt from the checkpoint and any important implementation follow-ups. Delete unused prompt blocks.\n\nReplace with an exact prompt.\n\n\nReplace with another exact prompt, if needed."
+    "text": "Substantive prompts\nPaste the exact prompts that shaped the extension. Include the customized extension-selection prompt from the checkpoint and any important implementation follow-ups. Delete unused prompt blocks.\n\nI am creating a regression case study in R and Quarto. My question is “what factors impact flight delays”. The response is the minutes of arrival delay, the main predictors are found in the proposal template that’s attached, as is the model. My main result so far is that pretty much everything is significant. I found this limitation or opportunity: We can’t predict very well, because our predictors rely on information known after a flight lands. Suggest three feasible extensions that keep the core analysis connected to regression methods taught in my class. One option may be a model not taught in class used as a comparator. For each, explain how it strengthens the same research question, how its result would enter the final case study, the implementation steps, and two ways I could verify it. Do not choose for me."
   },
   {
     "objectID": "ai-use.html#my-decisions",
     "href": "ai-use.html#my-decisions",
     "title": "AI Use and Verification",
     "section": "My decisions",
-    "text": "My decisions\n\nAccepted: What useful advice did you use?\nChanged: What did you adapt to fit your data or goals?\nRejected or corrected: What advice was unsuitable, unnecessary, or wrong?\n\nConnection to the final case study: Identify where the extension’s method and result appear on the final page and how they strengthen the course-based analysis."
+    "text": "My decisions\n\nAccepted: What useful advice did you use? &gt; Claude suggested using a timing ladder, where we fit different models based on what information is available at different times to see how well we can predict flight delays at different points. Additionally, we are going to use random forest model as a comparator model, to see how well our linear models actually do at predicting (in addition to CV). The random forest model is the AI extension.\nChanged: What did you adapt to fit your data or goals? &gt; We are not going to run lasso regression, because we want to see the effects for every day of the week and across each airline. If we remove any airlines or days, then this model isn’t generalizable.\nRejected or corrected: What advice was unsuitable, unnecessary, or wrong? &gt; Discussions about looking at standard errors instead of p-values was something that we were not interested in doing and it was unsuitable forus.\n\nConnection to the final case study: Identify where the extension’s method and result appear on the final page and how they strengthen the course-based analysis.\n\nWe are going to use a random forest method with each of our timing slots to compare it to our LM CV RMSE to see if our LM model is actually good at predicting things. The results will appear right next to any LM results to provide the comparison point."
   },
   {
     "objectID": "ai-use.html#independent-verification",
@@ -39,14 +39,14 @@
     "href": "ai-use.html#remaining-limitation",
     "title": "AI Use and Verification",
     "section": "Remaining limitation",
-    "text": "Remaining limitation\nState one important uncertainty, failure mode, or limitation that remains."
+    "text": "Remaining limitation\nState one important uncertainty, failure mode, or limitation that remains.\nWe still haven’t coded up our hub indicator, so that’s a very obvious limitation or goal here. Additionally, our data is limited to the month of January in 2025, so that isn’t super helpful."
   },
   {
     "objectID": "ai-use.html#other-ai-use-if-any",
     "href": "ai-use.html#other-ai-use-if-any",
     "title": "AI Use and Verification",
     "section": "Other AI use, if any",
-    "text": "Other AI use, if any\nBriefly disclose earlier debugging, proofreading, or other AI assistance. Write “None” if there was no other use."
+    "text": "Other AI use, if any\nBriefly disclose earlier debugging, proofreading, or other AI assistance. Write “None” if there was no other use.\nClaude has been used on this project to debug ggplot issues and in the generation of the AI extension."
   },
   {
     "objectID": "index.html",
@@ -96,5 +96,12 @@
     "title": "Replace with a specific, informative title",
     "section": "Data and code",
     "text": "Data and code\n\nData: Replace with a working source link or citation and any brief acquisition note needed to reproduce the project.\nRepository: Replace with your repository URL.\nAI-use record\nOther sources: Cite package documentation, articles, code, and other sources that materially informed the work."
+  },
+  {
+    "objectID": "ai-use.html#independent-verification-will-be-verified-after-models-are-built-and-run-but-the-ideas-are-here",
+    "href": "ai-use.html#independent-verification-will-be-verified-after-models-are-built-and-run-but-the-ideas-are-here",
+    "title": "AI Use and Verification",
+    "section": "Independent verification (WILL BE VERIFIED AFTER MODELS ARE BUILT AND RUN, BUT THE IDEAS ARE HERE)",
+    "text": "Independent verification (WILL BE VERIFIED AFTER MODELS ARE BUILT AND RUN, BUT THE IDEAS ARE HERE)\n\nCheck and result: We will build a fake dataset with simulated values and test to see if the models are actually useful in predicting (to see if the LM is as good as the random forest or if the random forest is capturing trends that LM can’t).\nCheck and result: We will check our forest against LM on our full model that isn’t useful for prediction. The forest should perform about like LM there, and permutation importance should rank DEP_DELAY_NEW first.\n\nLink or cite verification sources where appropriate. A second AI response does not count as independent verification."
   }
 ]
